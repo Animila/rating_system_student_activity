@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib import admin
 
 # База пользователей
 class DataUser(models.Model):
@@ -10,6 +10,10 @@ class DataUser(models.Model):
     number_mobile = models.CharField(max_length=150)
     count_event = models.IntegerField()
     group = models.CharField(max_length=15)
+    image = models.ImageField(upload_to='user/images/')
+
+    def __str__(self):
+        return self.names
 
 
 # Уровень соревнований
@@ -36,9 +40,11 @@ class PlaceEvent(models.Model):
         return str(self.number_place)
 
 
-# список соревнований пользоввателя
-class UserEvent(models.Model):
+# список соревнований пользователя
+class Event(models.Model):
     id = models.BigAutoField(primary_key=True)
+    member_event = models.ForeignKey(DataUser, on_delete=models.CASCADE)
     title_event = models.ForeignKey(ListEvent, on_delete=models.CASCADE)
     level_event = models.ForeignKey(ListLevelEvent, on_delete=models.CASCADE)
     place = models.ForeignKey(PlaceEvent, on_delete=models.CASCADE)
+    document_event = models.ImageField(upload_to='user/document/')
