@@ -1,7 +1,22 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
+{% load static %}
+<div class="container-fluid home">
+    <div class="row">
+        <h1 class="col-md-7 offset-md-4">Рейтинговая система студентов и активистов</h1>
+    </div>
+</div>
 
-<h1></h1>
+<section class="home_news">
+    <h2 class="text-center">НОВОСТИ</h2>
+    <div class="row">
+        <img class="col home_news_item" src="{% static 'img/1.png' %}">
+        <img class="col home_news_item" src="{% static 'img/2.png' %}">
+        <img class="col home_news_item" src="{% static 'img/3.png' %}">
+    </div>
+
+</section>
+
 
 {% endblock %}
