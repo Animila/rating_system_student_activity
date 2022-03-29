@@ -1,13 +1,26 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Личный кабинет</title>
-</head>
-<body>
-    <h1>Личный кабинет</h1>
-</body>
-</html>
+{% extends 'home/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="cabinet">
+    <div class="container">
+
+        <h2 class="text-center">Неробов Христофоров Данилович</h2>
+        <div class="row">
+            <img class="col-md-5" src="{% static 'img/profile.png' %}" alt="">
+            <div class="col-md-7">
+                <p>19.03.2001</p>
+                <p>+7924649721</p>
+                <p>Количество участий - 3</p>
+                <p>qwezxc@mail.ru</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
