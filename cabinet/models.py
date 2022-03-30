@@ -1,15 +1,24 @@
 from django.db import models
 from django.contrib import admin
 
+
+# БД названия групп
+class Group(models.Model):
+    title_group = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.title_group
+
+
 # База пользователей
 class DataUser(models.Model):
     id = models.BigAutoField(primary_key=True)
     names = models.CharField(max_length=150)
     date_birthday = models.DateField()
     email = models.EmailField(max_length=255)
-    number_mobile = models.CharField(max_length=150)
+    number_mobile = models.CharField(max_length=12)
     count_event = models.IntegerField()
-    group = models.CharField(max_length=15)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='user/images/')
 
     def __str__(self):
@@ -48,3 +57,4 @@ class Event(models.Model):
     level_event = models.ForeignKey(ListLevelEvent, on_delete=models.CASCADE)
     place = models.ForeignKey(PlaceEvent, on_delete=models.CASCADE)
     document_event = models.ImageField(upload_to='user/document/')
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
